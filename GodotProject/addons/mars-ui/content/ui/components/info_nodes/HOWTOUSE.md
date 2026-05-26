@@ -1,0 +1,3 @@
+- Add an InfoNodeScreen to scene
+- Add Info Nodes to project
+- Add references to each Info Node in the array in InfoNodeScreen

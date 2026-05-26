@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://hl7flstb3lmw"]
+
+[ext_resource type="Script" uid="uid://cfri5d84ns5tk" path="res://addons/mars-ui/content/ui/components/info_nodes/info_node/info_node.gd" id="2_705ry"]
+[ext_resource type="Texture2D" uid="uid://cmipcvblatx6" path="res://content/assets/sprites/locationWhite.png" id="3_0xbgu"]
+[ext_resource type="AudioStream" uid="uid://4lafipbwp1jh" path="res://addons/mars-ui/assets/sounds/click.wav" id="3_4c384"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_42jtx"]
+radius = 0.05
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4m03e"]
+radius = 0.07
+
+[node name="InfoNode" type="Node3D"]
+script = ExtResource("2_705ry")
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("SphereShape3D_42jtx")
+
+[node name="Icon" type="Sprite3D" parent="Body"]
+unique_name_in_owner = true
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+texture = ExtResource("3_0xbgu")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_4c384")
+volume_db = -18.0
+
+[node name="FingerArea" type="Area3D" parent="." groups=["ui_focus_skip"]]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FingerArea"]
+shape = SubResource("SphereShape3D_4m03e")
